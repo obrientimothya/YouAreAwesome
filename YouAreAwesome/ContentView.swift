@@ -9,50 +9,34 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var message: String = ""
-    @State private var imageString: String = ""
+    @State private var imageName: String = ""
     private let message1: String = "You are awesome!"
     private let message2: String = "You are great!"
-    private let imageString1: String = "sun.max.fill"
-    private let imageString2: String = "hand.thumbsup"
+    private let imageString1: String = "image0"
+    private let imageString2: String = "image1"
     var body: some View {
         
         VStack {
             
             Spacer()
             
-            if (message == message1) {
-                Image(systemName: imageString)
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundStyle(.orange)
-            }
-            if (message == message2){
-                Image(systemName: imageString)
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundStyle(.orange)
-            }
+            Image(imageName)
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(.orange)
             Text(message)
                 .font(.largeTitle)
-                .fontWeight(.ultraLight)
+                .fontWeight(.heavy)
+                .foregroundStyle(.red)
             
             Spacer()
             
-            
             Button("Press Me!") {
-//                if(message == message1) {
-//                    message = message2
-//                    imageString = imageString2
-//                } else {
-//                    message = message1
-//                    imageString = imageString1
-//                }
                 message = message == message1 ? message2 : message1
-                imageString = imageString == imageString1 ? imageString2 : imageString1
+                imageName = imageName == imageString1 ? imageString2 : imageString1
             }
             .buttonStyle(.borderedProminent)
             .font(.title2)
-            .tint(.orange)
         }
         .padding()
         
