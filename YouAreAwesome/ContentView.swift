@@ -8,32 +8,44 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var message: String = "I Am A Programmer!"
+    @State private var message: String = ""
+    @State private var imageString: String = ""
+    private let message1: String = "You are awesome!"
+    private let message2: String = "You are great!"
+    private let imageString1: String = "sun.max.fill"
+    private let imageString2: String = "hand.thumbsup"
     var body: some View {
         
         VStack {
             
             Spacer()
             
-            Image(systemName: "swift")
-                .resizable()
-                .scaledToFit()
-                .foregroundStyle(.orange)
-                .frame(width: 200, height: 200)
+            if (message == message1) {
+                Image(systemName: imageString)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(.orange)
+            }
+            if (message == message2){
+                Image(systemName: imageString)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(.orange)
+            }
             Text(message)
                 .font(.largeTitle)
                 .fontWeight(.ultraLight)
             
             Spacer()
             
-            HStack {
-                Button("Awesome") {
-                    message = "Awesome!"
-                    print(message)
-                }
-                Button("Great") {
-                    message = "Great!"
-                    print(message)
+            
+            Button("Press Me!") {
+                if(message == message1) {
+                    message = message2
+                    imageString = imageString2
+                } else {
+                    message = message1
+                    imageString = imageString1
                 }
             }
             .buttonStyle(.borderedProminent)
@@ -41,7 +53,7 @@ struct ContentView: View {
             .tint(.orange)
         }
         .padding()
-
+        
     }
 }
 
