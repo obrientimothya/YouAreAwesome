@@ -40,13 +40,15 @@ struct ContentView: View {
             
             
             Button("Press Me!") {
-                if(message == message1) {
-                    message = message2
-                    imageString = imageString2
-                } else {
-                    message = message1
-                    imageString = imageString1
-                }
+//                if(message == message1) {
+//                    message = message2
+//                    imageString = imageString2
+//                } else {
+//                    message = message1
+//                    imageString = imageString1
+//                }
+                message = message == message1 ? message2 : message1
+                imageString = imageString == imageString1 ? imageString2 : imageString1
             }
             .buttonStyle(.borderedProminent)
             .font(.title2)
