@@ -17,24 +17,32 @@ struct ContentView: View {
         
         VStack {
             
-            Spacer()
+            Text(message)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .foregroundStyle(.red)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.5)
+                .frame(height: 100)
+                .animation(.easeInOut(duration: 0.15), value: message)
             
             Image(imageName)
                 .resizable()
                 .scaledToFit()
                 .foregroundStyle(.orange)
-            Text(message)
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundStyle(.red)
+                .animation(.default, value: imageName)
             
             Spacer()
             
             Button("Show Message") {
-                let messages: [String] = ["You are awesome", "Way to go!", "Keep it up!", "You are great!"]
+                let messages: [String] = [
+                    "You are awesome",
+                    "Way to go! This is a really good one! You are truly so awesome!",
+                    "Keep it up you are really good!",
+                    "You are great!"]
                 message = messages[messageIndex]
-                messageIndex = messageIndex == messages.count - 1 ? 0 : messageIndex + 1
-                imageNumber = imageNumber == 9 ? 0 : imageNumber + 1
+                messageIndex = Int.random(in: 0..<messages.count - 1)
+                let imageNumber = Int.random(in: 0...9)
                 imageName = "image\(imageNumber)"
             }
             .buttonStyle(.borderedProminent)
